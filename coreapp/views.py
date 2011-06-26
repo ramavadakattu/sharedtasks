@@ -19,8 +19,7 @@ from django.template.defaultfilters import urlize
 
 
 def displayTasks(request,page_name):
-    '''Shared tasks'''   
-    print "Page name ="+page_name
+    '''Shared tasks'''       
     tasks = Task.objects.filter(page__name__iexact=page_name,deleted=False).order_by("-updateddate");
     deleted_tasks = Task.objects.filter(page__name__iexact=page_name,deleted=True).order_by("-updateddate");
     page= TaskPage.objects.get(name__iexact=page_name)
@@ -60,8 +59,7 @@ def addTask(request):
     return HttpResponse(json)
 
 
-def deleteTask(request):
-        print "deleting the task "
+def deleteTask(request):        
         taskid = int(request.POST["taskid"])
         print taskid
         giventask = Task.objects.get(pk=taskid)
@@ -74,10 +72,8 @@ def deleteTask(request):
         return HttpResponse(json)
     
     
-def undoTask(request):
-        print "undo  the task "
-        taskid = int(request.POST["taskid"])
-        print taskid
+def undoTask(request):        
+        taskid = int(request.POST["taskid"])        
         giventask = Task.objects.get(pk=taskid)
         giventask.deleted = False
         giventask.save();
@@ -122,8 +118,7 @@ def showAllPages(request):
           
 
 
-def pdeleteTask(request):
-        print "permenently deleting the task "
+def pdeleteTask(request):        
         taskid = int(request.POST["taskid"])
         print taskid
         giventask = Task.objects.get(pk=taskid)      
