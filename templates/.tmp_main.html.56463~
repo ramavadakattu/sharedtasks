@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<script type="text/javascript" src="{{ MEDIA_URL }}jquery-1.4.2.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}tasks.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}jquery.hoverIntent.js"></script>
+ 
+
+  <link media="screen" href="{{ MEDIA_URL }}css/main.css" type="text/css" rel="stylesheet"/>
+
+
+   
+
+<title>Shared Taks </title>
+</head>
+<body>
+	
+	
+	<h1>{{page.getGoodName|title}} Shared Tasks   </h1>
+	
+	<input type="text"  name="taskcontent"   value=""  size="40" />  <input type="button"    id="taskbutton" onclick="addTask(0)"  value="AddTask"/>
+	
+	<input type="hidden"   name="pagename"   value="{{page_name}}"  />
+	
+	<br/><p></p>
+		<div id="feedbackbox"> </div>
+		
+		
+	
+	<div id="holder">
+	
+	
+	<div id="leftbox">	
+		
+	<h2> Task List </h2>
+	
+	<table id="tasktable">
+				
+		{% for task in tasks %}
+		<tr  id="row{{task.id}}"  class="taskclass">
+			<td  class="hover-menu">
+              <span id="tasktext{{task.id}}">  {{task.text|urlize}}  </span> 
+			  
+			  
+			  &nbsp; &nbsp; &nbsp; <span class='actions'>  <a href='javascript:void(0)'   onclick="deleteTask('{{task.id}}','row{{task.id}}')" >  <img src="{{ MEDIA_URL }}delete.png"/> </a>
+			     &nbsp; &nbsp;   <a href='javascript:void(0)'   onclick="editTask('{{task.id}}','tasktext{{task.id}}')" > <img src="{{ MEDIA_URL }}edit.png" </a> </a> </span>
+			  
+			
+			  </td>			   
+		</tr>  
+         {% endfor %}
+		 </table>
+		 
+</div>
+
+<div id="rightbox">
+		<h2 class="complete"> Completed Task  List </h2>
+		
+		
+		<table id="deletetable">				
+		{% for task in deleted_tasks %}
+		<tr  id="row{{task.id}}"  class="taskclass">
+			<td  class="hover-menu">
+              <span id="tasktext{{task.id}}">  {{task.text|urlize}}  </span> 
+			  
+			  
+			  &nbsp; &nbsp; &nbsp; <span class='actions'>  <a href='javascript:void(0)'   onclick="undoDeleteTask('{{task.id}}','row{{task.id}}')" >  <img src="{{ MEDIA_URL }}undo.png"/> </a>
+		&nbsp; 	  <a href='javascript:void(0)'   onclick="perDeleteTask('{{task.id}}','row{{task.id}}')" >  <img src="{{ MEDIA_URL }}pdelete.png"/> </a>
+			  
+			      </span>
+			  
+			
+			  </td>			   
+		</tr>  
+         {% endfor %}
+		 </table>
+		
+		
+	
+	
+	
+</div>
+
+
+	
+	
+	
+	<div id="floatrightleft">
+		
+	</div>
+	
+	</div>
+
+
+
+	
+	
+
+	
+	
+	
+	<div class="footer">
+		 
+		<a href="/sharedtasks/displaypage/" > Create new task page for my team </a>  &nbsp;&nbsp;&nbsp;
+			<a href="/sharedtasks/allpages/" > Show all task pages  </a>
+			&nbsp; &nbsp;
+			<a href="{% url pageurl %}" > Home </a>
+		
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</body>
+</html>

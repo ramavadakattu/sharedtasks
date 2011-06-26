@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+  <link media="screen" href="{{ MEDIA_URL }}css/main.css" type="text/css" rel="stylesheet"/>
+<title>All task pages</title>
+</head>
+<body>
+	
+	
+	<h2> All task pages</h2>
+	<ul>
+	
+	{% for page in pages %}
+	<li>   <a href="{%url  taskshomeurl   page.name %} "> {{page.name}}  </a></li>
+	
+	
+	{% endfor %}
+	
+	</ul>
+	
+	
+		<div class="footer">
+		
+		<a href="{% url pageurl %}" > Home  </a>
+		
+		
+	</div>
+	
+
+</body>
+</html>
