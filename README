@@ -10,9 +10,11 @@ How to use :
 How to setup this application on my local host
 -----------------------------------------------
 
-1.Clone
+1.Clone (or) readonly access
  	git clone git@github.com:ramavadakattu/sharedtasks.git
  	(more detais : http://help.github.com/fork-a-repo/ )
+  Read only access
+	git clone git://github.com/ramavadakattu/sharedtasks.git
   Download 
 	https://github.com/ramavadakattu/sharedtasks
 
