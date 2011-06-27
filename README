@@ -1,1 +1,51 @@
-if you are thinking about keeping track of tasks across your team in way that any one can edit , add ,complete a task then you use this application.
+If you are looking for an application where multiple people want to collaborate on tasks related to a project.
+Then you can use this opensourced sharedtasks application.
+
+How it looks : http://174.129.62.14/
+
+How to use :
+
+
+
+How to setup this application on my local host
+-----------------------------------------------
+
+1.Clone
+ 	git clone git@github.com:ramavadakattu/sharedtasks.git
+ 	(more detais : http://help.github.com/fork-a-repo/ )
+  Download 
+	https://github.com/ramavadakattu/sharedtasks
+
+
+2.Setup a database with some name and update sharedtasks/settings.py file accordingly.
+  (i.e you need to change the below field in the settings.py file)
+         DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'databasename',                      # Or path to database file if using sqlite3.
+        'USER': 'username',                      # Not used with sqlite3.
+        'PASSWORD': 'password',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+         'DATABASE_OPTIONS': '{"init_command": "SET storage_engine=INNODB"}',
+    }
+})
+
+
+3.[syncdb]
+  python manage.py syncdb  (to setup admin and etc....)
+
+
+4.[migrations initial database]
+  python manage.py migrate (to setup initial database for sharedtasks)
+
+
+5.[Runserver]
+  python manage.py runserver 0.0.0.0:9002 
+
+
+6.Enjoy the sharedtasks application.In case you encounter any bugs feel free to fix them.:)
+
+
+  
+	
